@@ -14,8 +14,6 @@ const toStringValues = (values, totalValue) =>
 
 const checkFormValidity = formElement => formElement.checkValidity()
 
-const match = matchString => value => value.field === matchString
-
 const getFormValues = formElement =>
   Object.values(formElement.elements)
     .filter(element => ['SELECT', 'INPUT'].includes(element.nodeName))
@@ -34,7 +32,6 @@ export {
   toCurrency,
   toStringValues,
   checkFormValidity,
-  match,
   getFormValues,
   getElementsObjectByID
 }

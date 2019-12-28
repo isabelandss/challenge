@@ -1,15 +1,17 @@
 import { getTotalValue } from '../domain'
-import { toStringValues, match } from '../utils'
+import { toStringValues } from '../utils'
 
 const loanService = {
   create: values => {
     return new Promise((resolve, reject) => {
       try {
-        const installments = values.find(match('installments')).value
-        const loanvalue = values.find(match('loanvalue')).value
+        const installments = values.find(value => value.field === 'installments').value
+        const loanvalue = values.find(value => value.field === 'loanvalue').value
         const totalvalue = getTotalValue({ installments: installments, loanAmount: loanvalue })
 
-        resolve(toStringValues(values, totalvalue))
+        const response = toStringValues(values, totalvalue)
+
+        resolve(response)
       } catch (error) {
         reject(error)
       }
