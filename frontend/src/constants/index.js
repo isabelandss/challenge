@@ -17,10 +17,10 @@ export default {
   },
 
   //de-para
-  parcelas: 'Quantidade de parcelas',
-  garantia: 'Garantia',
-  'valor-garantia': 'Valor da garantia',
-  'valor-garantia-range': '',
-  'valor-emprestimo': 'Valor do empréstimo',
-  'valor-emprestimo-range': '',
+  installments: 'Quantidade de parcelas',
+  warrantytype: 'Garantia',
+  warrantyvalue: 'Valor da garantia',
+  warrantyvaluerange: '',
+  loanvalue: 'Valor do empréstimo',
+  loanvaluerange: '',
 }
