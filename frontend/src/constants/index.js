@@ -1,6 +1,6 @@
 export default {
   iof: 0.0638,
-  tx: 0.0234,
+  tax: 0.0234,
   vehicle: {
     min: 3000.00,
     max: 100000.00,
