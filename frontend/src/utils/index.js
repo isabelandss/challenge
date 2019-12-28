@@ -24,10 +24,17 @@ const getFormValues = formElement =>
       value: element.value
     }))
 
+const getElementsObjectByID = body => (
+  [...body]
+    .filter(el => el.id)
+    .map(item => ({ [item.id]: item }))
+    .reduce((a, b) => ({ ...a, ...b }), {}))
+
 export {
   toCurrency,
   toStringValues,
   checkFormValidity,
   match,
-  getFormValues
+  getFormValues,
+  getElementsObjectByID
 }

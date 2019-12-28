@@ -44,7 +44,7 @@
                 <div class="field-group">
                   <div class="field">
                     <label for="warrantyvalue">Valor da Garantia</label>
-                    <input type="text" required name="warrantyvalue" id="warrantyvalue" value="14400" />
+                    <input type="number" required name="warrantyvalue" id="warrantyvalue" value="14400" />
                   </div>
                   <div class="field">
                     <div class="range">
@@ -61,14 +61,14 @@
                 <div class="field-group">
                   <div class="field">
                     <label for="loanvalue">Valor do Empréstimo</label>
-                    <input type="text" required name="loanvalue" id="loanvalue" value="57000">
+                    <input type="number" required name="loanvalue" id="loanvalue" value="57000">
                   </div>
                   <div class="field">
                     <div class="range">
                       <input type="range" name="loanvaluerange" id="loanvaluerange" min="30000" max="100000">
                       <div class="range__values">
-                        <span>30.000</span>
-                        <span>100.000</span>
+                        <span id="rangestart">30.000</span>
+                        <span id="rangeend">100.000</span>
                       </div>
                     </div>
                   </div>
