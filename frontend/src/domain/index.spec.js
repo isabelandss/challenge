@@ -1,37 +1,37 @@
-import { installmentValue, totalValue } from '.'
+import { getInstallmentValue, getTotalValue } from '.'
 
-describe('METHOD: totalValue', () => {
+describe('METHOD: getTotalValue', () => {
   test('should be a function', () => {
-    expect(typeof totalValue).toBe('function')
+    expect(typeof getTotalValue).toBe('function')
   })
 
   test('should return zero when no parameters', () => {
     const expected = 0
-    const received = totalValue()
+    const received = getTotalValue()
     expect(received).toEqual(expected)
   })
 
   test('should return total value', () => {
     const expected = 26668.8
-    const received = totalValue({ installments: 24, loanAmount: 24000 })
+    const received = getTotalValue({ installments: 24, loanAmount: 24000 })
     expect(received).toEqual(expected)
   })
 })
 
-describe('METHOD: installmentValue', () => {
+describe('METHOD: getInstallmentValue', () => {
   test('should be a function', () => {
-    expect(typeof installmentValue).toBe('function')
+    expect(typeof getInstallmentValue).toBe('function')
   })
 
   test('should return zero when no parameters', () => {
     const expected = 0
-    const received = installmentValue()
+    const received = getInstallmentValue()
     expect(received).toEqual(expected)
   })
 
   test('should return installment value', () => {
     const expected = 1000
-    const received = installmentValue({ installments: 24, totalValue: 24000 })
+    const received = getInstallmentValue({ installments: 24, totalValue: 24000 })
     expect(received).toEqual(expected)
   })
 })

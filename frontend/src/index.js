@@ -1,4 +1,6 @@
 import './styles.css'
+import { getTotalValue } from './domain'
+import constants from './constants'
 
 export const checkFormValidity = formElement => formElement.checkValidity()
 
@@ -10,24 +12,21 @@ export const getFormValues = formElement =>
       value: element.value
     }))
 
-export const toStringFormValues = values => {
-  const match = matchString => value => value.field === matchString
-  const IOF = 6.38 / 100
-  const INTEREST_RATE = 2.34 / 100
-  const TIME = values.find(match('parcelas')).value / 1000
-  const VEHICLE_LOAN_AMOUNT = values.find(match('valor-emprestimo')).value
-
-  return `Confirmação\n${values
-    .map(value => `Campo: ${value.field}, Valor: ${value.value}`)
-    .join('\n')}`.concat(
-      `\nTotal ${(IOF + INTEREST_RATE + TIME + 1) * VEHICLE_LOAN_AMOUNT}`
-    )
-}
+export const toStringFormValues = (values, totalValue) =>
+  `CONFIRMAÇÃO\n\n${values
+    .map(value => constants[value.field] && `${constants[value.field]}: ${value.value}`)
+    .filter(value => value !== '')
+    .join('\n')}`.concat(`\nTotal ${totalValue}`)
 
 export function Send(values) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(toStringFormValues(values))
+      const match = matchString => value => value.field === matchString
+      const TIME = values.find(match('parcelas')).value
+      const VEHICLE_LOAN_AMOUNT = values.find(match('valor-emprestimo')).value
+      const TOTAL = getTotalValue({ installments: TIME, loanAmount: VEHICLE_LOAN_AMOUNT })
+
+      resolve(toStringFormValues(values, TOTAL))
     } catch (error) {
       reject(error)
     }
@@ -49,7 +48,7 @@ export function handleChangeRangeVehicleUnderWarranty(
   warrantyRangeElement,
   vehicleWarrantyElement
 ) {
-  warrantyRangeElement.addEventListener('change', function (event) {
+  warrantyRangeElement.addEventListener('input', function (event) {
     vehicleWarrantyElement.value = event.target.value
   })
 }
@@ -58,17 +57,24 @@ export function handleChangeVehicleLoanAmount(
   loanAmountRangeElement,
   loanAmountElement
 ) {
-  loanAmountRangeElement.addEventListener('change', function (event) {
+  loanAmountRangeElement.addEventListener('input', function (event) {
     loanAmountElement.value = event.target.value
   })
 }
 
-export default class CreditasChallenge {
-  static initialize() {
-    this.registerEvents()
-  }
+export const CreditasChallenge = (() => {
+  const installmentsElement = document.getElementById()
+  const warrantyTypeElement = document.getElementById()
+  const warrantyValueElement = document.getElementById()
+  const warrantyRangeElement = document.getElementById()
+  const loanElement = document.getElementById()
+  const loanRangeElement = document.getElementById()
+  const installmentValueElement = document.getElementById()
+  const totalElement = document.getElementById()
+  const taxElement = document.getElementById()
+  const buttonElement = document.getElementById()
 
-  static registerEvents() {
+  const registerEvents = () => {
     Submit(document.querySelector('.form'))
 
     handleChangeRangeVehicleUnderWarranty(
@@ -81,7 +87,13 @@ export default class CreditasChallenge {
       document.getElementById('valor-emprestimo')
     )
   }
-}
+
+  return {
+    initialize() {
+      registerEvents()
+    }
+  }
+})()
 
 document.addEventListener('DOMContentLoaded', function () {
   CreditasChallenge.initialize()

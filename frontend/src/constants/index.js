@@ -14,5 +14,13 @@ export default {
     min: 30000.00,
     max: 4500000.00,
     installments: [120, 180, 240],
-  }
+  },
+
+  //de-para
+  parcelas: 'Quantidade de parcelas',
+  garantia: 'Garantia',
+  'valor-garantia': 'Valor da garantia',
+  'valor-garantia-range': '',
+  'valor-emprestimo': 'Valor do empréstimo',
+  'valor-emprestimo-range': '',
 }
