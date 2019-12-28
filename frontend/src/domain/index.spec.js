@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { getInstallmentValue, getTotalValue } from '.'
 
 describe('METHOD: getTotalValue', () => {

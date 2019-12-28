@@ -6,5 +6,5 @@ const getInstallmentValue = ({ installments = 0, totalValue = 0 } = {}) => total
 
 export {
   getTotalValue,
-  getInstallmentValue,
+  getInstallmentValue
 }

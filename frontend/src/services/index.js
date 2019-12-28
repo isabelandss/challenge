@@ -8,7 +8,7 @@ const loanService = {
         const installments = values.find(match('installments')).value
         const loanvalue = values.find(match('loanvalue')).value
         const totalvalue = getTotalValue({ installments: installments, loanAmount: loanvalue })
-  
+
         resolve(toStringValues(values, totalvalue))
       } catch (error) {
         reject(error)
@@ -18,5 +18,5 @@ const loanService = {
 }
 
 export {
-  loanService,
+  loanService
 }

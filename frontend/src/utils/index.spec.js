@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { toCurrency } from '.'
 
 describe('METHOD: toCurrency', () => {
