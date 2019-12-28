@@ -6,31 +6,28 @@ const toCurrency = ({ value = 0, withSymbol = false, numDecimal = 2 } = {}) => {
   return Number(value).toLocaleString('pt-BR', { ...defaultOptions, ...symbolOptions })
 }
 
-//@NOTESTS
 const toStringValues = (values, totalValue) =>
   `CONFIRMAÇÃO\n\n${values
     .map(value => constants[value.field] && `${constants[value.field]}: ${value.value}`)
     .filter(value => value !== '')
     .join('\n')}`.concat(`\nTotal ${totalValue}`)
 
-//@NOTESTS
 const checkFormValidity = formElement => formElement.checkValidity()
 
-//@NOTESTS
 const match = matchString => value => value.field === matchString
 
 const getFormValues = formElement =>
-Object.values(formElement.elements)
-  .filter(element => ['SELECT', 'INPUT'].includes(element.nodeName))
-  .map(element => ({
-    field: element.name,
-    value: element.value
-  }))
+  Object.values(formElement.elements)
+    .filter(element => ['SELECT', 'INPUT'].includes(element.nodeName))
+    .map(element => ({
+      field: element.name,
+      value: element.value
+    }))
 
 export {
   toCurrency,
   toStringValues,
   checkFormValidity,
   match,
-  getFormValues,
+  getFormValues
 }
