@@ -49,10 +49,8 @@ export function handleChangeRangeVehicleUnderWarranty(
   warrantyRangeElement,
   vehicleWarrantyElement
 ) {
-  const MIN_VALUE = 12000.0
   warrantyRangeElement.addEventListener('change', function (event) {
-    vehicleWarrantyElement.value =
-      (Number(MIN_VALUE) * Number(event.target.value)) / 100 + Number(MIN_VALUE)
+    vehicleWarrantyElement.value = event.target.value
   })
 }
 
@@ -60,10 +58,8 @@ export function handleChangeVehicleLoanAmount(
   loanAmountRangeElement,
   loanAmountElement
 ) {
-  const MIN_VALUE = 30000.0
   loanAmountRangeElement.addEventListener('change', function (event) {
-    loanAmountElement.value =
-      (Number(MIN_VALUE) * Number(event.target.value)) / 100 + Number(MIN_VALUE)
+    loanAmountElement.value = event.target.value
   })
 }
 

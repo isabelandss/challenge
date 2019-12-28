@@ -1,6 +1,10 @@
 export default {
   iof: 0.0638,
   tax: 0.0234,
+  warranty: {
+    min: 12.000,
+    max: 24.000,
+  },
   vehicle: {
     min: 3000.00,
     max: 100000.00,
