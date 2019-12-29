@@ -1,4 +1,5 @@
-import './styles.css'
+import './styles/index.css'
+
 import { checkFormValidity, getFormValues, toCurrency, getElementsObjectByID } from './utils'
 import { loanService } from './services'
 import { getTotalValue, getInstallmentValue } from './domain'
