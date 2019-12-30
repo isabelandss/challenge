@@ -23,20 +23,20 @@ export const handleChangeWarrantyType = (elements, event) => {
   elements.installments.innerHTML = constants[event.target.value].installments.map(i => `<option value=${i}>${i}</option>`).join('')
 }
 
+export const submitForm = (event, formElement) => {
+  event.preventDefault()
+
+  checkFormValidity(formElement)
+  loanService.create(getFormValues(formElement))
+    .then(result => window.confirm(result, 'Your form submited success'))
+    .catch(error => window.alert('Your form submited error', error))
+}
+
 export const CreditasChallenge = (() => {
-  const formElement = document.getElementById('form')
-  const elements = getElementsObjectByID(document.querySelectorAll('form *'))
-
-  const submitForm = (event, formElement) => {
-    event.preventDefault()
-
-    checkFormValidity(formElement) &&
-      loanService.create(getFormValues(formElement))
-        .then(result => window.confirm(result, 'Your form submited success'))
-        .catch(error => window.alert('Your form submited error', error))
-  }
-
   const registerEvents = () => {
+    const formElement = document.getElementById('form')
+    const elements = getElementsObjectByID(document.querySelectorAll('form *'))
+
     elements.warrantyvaluerange.addEventListener('input', event => (elements.warrantyvalue.value = event.target.value))
     elements.loanvaluerange.addEventListener('input', event => (elements.loanvalue.value = event.target.value))
 
