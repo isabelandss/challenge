@@ -62,7 +62,8 @@
       "**/?(*.)+(spec|test).js?(x)"
     ],
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "src/constants"
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
